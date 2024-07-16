@@ -40,7 +40,6 @@ def about(request):
 
 
 def get_item(request, item_id):
-    """ По указанному id возвращает элемент из списка. """
     for item in items:
         if item['id'] == item_id:
             context = {
@@ -48,13 +47,13 @@ def get_item(request, item_id):
                 "name": item['name'],
                 "quantity" : item['quantity'],
         }
-        return render(request, "item.html", context)
+            return render(request, "item.html", context)
     return HttpResponseNotFound(f"Товар с id={item_id} не найден")
 
 
 def get_items(request):
     context = {
-        "items": [item['id'], item['name'], item['quantity']],
+        "items": шеу,
     }
     return render(request, "items.html", context)
        
