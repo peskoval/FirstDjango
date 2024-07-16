@@ -12,20 +12,20 @@ author = {
 }
 
 items = [
-   {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
-   {"id": 2, "name": "Куртка кожаная" ,"quantity":2},
-   {"id": 5, "name": "Coca-cola 1 литр" ,"quantity":12},
-   {"id": 7, "name": "Картофель фри" ,"quantity":0},
-   {"id": 8, "name": "Кепка" ,"quantity":124},
+{"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
+{"id": 2, "name": "Куртка кожаная" ,"quantity":2},
+{"id": 5, "name": "Coca-cola 1 литр" ,"quantity":12},
+{"id": 7, "name": "Картофель фри" ,"quantity":0},
+{"id": 8, "name": "Кепка" ,"quantity":124},
 ]
 
 
 def home(request):
-    text = """
-    <h1>"Изучаем django"</h1>
-    <strong>Автор</strong>: <i>Пескова А.О.</i>
-    """
-    return render(request, "index.html")
+    context = {
+        "name": "Петров Иван Николаевич",
+        "email": "my_mail@mail.ru"
+    }
+    return render(request, "index.html", context)
 
 
 def about(request):
@@ -39,27 +39,22 @@ def about(request):
     return HttpResponse(text)
 
 
-# /item/1 
-# /item/2
-# ...
-# /item/n
 def get_item(request, item_id):
     """ По указанному id возвращает элемент из списка. """
     for item in items:
         if item['id'] == item_id:
-            result = f"""
-            <h2> Имя: {item['name']} </h2>
-            <p> Количество: {item['quantity']} </p>
-            <p> <a href='/items'>Назад к списку товаров</a> </p>
-            """
-            return HttpResponse(result)
+            context = {
+                "title": item['name'],
+                "name": item['name'],
+                "quantity" : item['quantity'],
+        }
+        return render(request, "item.html", context)
     return HttpResponseNotFound(f"Товар с id={item_id} не найден")
 
 
 def get_items(request):
-    result = "<h1> Список товаров </h1><ol>" 
-    for item in items:
-        result += f"""<li><a href='/item/{item["id"]}'> {item["name"]} </a></li>"""
-    result += "</ol>"
-    return HttpResponse(result)
+    context = {
+        "items": [item['id'], item['name'], item['quantity']],
+    }
+    return render(request, "items.html", context)
        
