@@ -1,18 +1,8 @@
-
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 from MainApp.models import Item
-
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
-
-
-# items = [
-#    {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
-#    {"id": 2, "name": "Куртка кожаная" ,"quantity":2},
-#    {"id": 5, "name": "Coca-cola 1 литр" ,"quantity":12},
-#    {"id": 7, "name": "Картофель фри" ,"quantity":0},
-#    {"id": 8, "name": "Кепка" ,"quantity":124},
-# ]
 
 
 def home(request):
@@ -38,18 +28,20 @@ def about(request):
 def get_item(request, item_id):
     """ По указанному id возвращает элемент из списка. """
     try:
-        if Item.ojectbs.get(pk=item_id):
-            context = {
-                "item": Item.objects.get(pk=item_id)
-            }
-        return render(request, 'item.html', context)
-    except AttributeError:
+        item = Item.objects.get(id=item_id)
+    except ObjectDoesNotExist:
         return HttpResponseNotFound(f"Товар с id={item_id} не найден")
+    else:
+        context = {"item": item}
+        return render(request, 'item_page.html', context)
+    
 
 
 def get_items(request):
+    # Получить все элементы из таблицы MainApp_item
+    items = Item.objects.all()
     context = {
-        "items": Item.objects.all()
+        "items": items
     }
-    return render(request, "items.html", context)
+    return render(request, "items_list.html", context)
        
