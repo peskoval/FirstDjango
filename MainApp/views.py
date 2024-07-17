@@ -6,7 +6,6 @@ from MainApp.models import Item
 # Create your views here.
 
 
-items = Item.objects.all()
 # items = [
 #    {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
 #    {"id": 2, "name": "Куртка кожаная" ,"quantity":2},
@@ -38,10 +37,9 @@ def about(request):
 
 def get_item(request, item_id):
     """ По указанному id возвращает элемент из списка. """
-    item = next((item for item in items if item.id == item_id), None)
-    if item is not None:
+    if Item.objects.get(pk=item_id):
         context = {
-            "item": item
+            "item": Item.objects.get(pk=item_id)
         }
         return render(request, 'item.html', context)
     return HttpResponseNotFound(f"Товар с id={item_id} не найден")
@@ -49,7 +47,7 @@ def get_item(request, item_id):
 
 def get_items(request):
     context = {
-        "items": items
+        "items": Item.objects.all()
     }
     return render(request, "items.html", context)
        
