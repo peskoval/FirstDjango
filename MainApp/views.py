@@ -37,12 +37,14 @@ def about(request):
 
 def get_item(request, item_id):
     """ По указанному id возвращает элемент из списка. """
-    if Item.objects.get(pk=item_id):
-        context = {
-            "item": Item.objects.get(pk=item_id)
-        }
+    try:
+        if Item.ojectbs.get(pk=item_id):
+            context = {
+                "item": Item.objects.get(pk=item_id)
+            }
         return render(request, 'item.html', context)
-    return HttpResponseNotFound(f"Товар с id={item_id} не найден")
+    except AttributeError:
+        return HttpResponseNotFound(f"Товар с id={item_id} не найден")
 
 
 def get_items(request):
