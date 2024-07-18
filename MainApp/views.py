@@ -15,11 +15,11 @@ def home(request):
 
 def about(request):
     author = {
-        "name": "Иван",
-        "middle_name": "Петрович",
-        "last_name": "Иванов",
-        "phone": "8-923-600-01-02",
-        "email": "vasya@mail.ru"
+        "name": "Александра",
+        "middle_name": "Олеговна",
+        "last_name": "Пескова",
+        "phone": "8-903-2**-31-18",
+        "email": "peskoval**@gmail.com"
     }
 
     return render(request, "about.html", {"author": author})
