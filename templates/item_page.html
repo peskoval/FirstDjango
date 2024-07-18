@@ -14,10 +14,12 @@
     <h2> Имя: {{ item.name }} </h2><br>
     {% if item.count == 0 %}
         <p> Количество: товар отсутствует </p>
-        Производитель: {{ item.brand }}
+        Производитель: {{ item.brand }}<br>
+        Описание: {{ item.description }}
     {% else %}
         <p> Количество: {{ item.count }} </p>
-        Производитель: {{ item.brand }}
+        Производитель: {{ item.brand }}<br>
+        Описание: {{ item.description }}
     {% endif %}
     
     <p> <a href='/items'>Назад к списку товаров</a> </p>
