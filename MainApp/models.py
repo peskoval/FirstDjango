@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Color(models.Model):
-    name = models.CharField(max_length=32)
+    name = models.CharField(max_length=32, unique=True)
 
 
 class Item(models.Model):
