@@ -1,1 +1,76 @@
-[{"model": "MainApp.item", "pk": 1, "fields": {"name": "Кроссовки", "brand": "abibas", "count": 10, "description": "Оба левые"}}, {"model": "MainApp.item", "pk": 2, "fields": {"name": "Куртка кожаная", "brand": "None", "count": 2, "description": "Приталенная куртка из кожи птеродактиля"}}, {"model": "MainApp.item", "pk": 3, "fields": {"name": "Coca-cola 1 литр", "brand": "Coca-cola", "count": 12, "description": "Flawour: Fanta"}}, {"model": "MainApp.item", "pk": 4, "fields": {"name": "Картофель фри", "brand": "None", "count": 0, "description": "Брусочки картофеля, обжаренные во фритюре на пальмовом масле, с сахаром"}}, {"model": "MainApp.item", "pk": 5, "fields": {"name": "Кепка", "brand": "None", "count": 124, "description": "Кепка Печкина, уже с вентиляцией"}}]
+[
+    {
+        "model": "MainApp.color",
+        "pk": 1,
+        "fields": {
+            "name": "red"
+        }
+    },
+    {
+        "model": "MainApp.color",
+        "pk": 2,
+        "fields": {
+            "name": "green"
+        }
+    },
+    {
+        "model": "MainApp.item",
+        "pk": 1,
+        "fields": {
+            "name": "Кроссовки",
+            "brand": "abibas",
+            "count": 10,
+            "description": "Удобные кроссовки на каждый день",
+            "colors": [
+                1,
+                2
+            ]
+        }
+    },
+    {
+        "model": "MainApp.item",
+        "pk": 2,
+        "fields": {
+            "name": "Куртка кожаная",
+            "brand": "nuke",
+            "count": 2,
+            "description": "Теплая красивая",
+            "colors": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "MainApp.item",
+        "pk": 3,
+        "fields": {
+            "name": "Coca-cola 1 литр",
+            "brand": "coca-cola",
+            "count": 12,
+            "description": "Вкусная",
+            "colors": []
+        }
+    },
+    {
+        "model": "MainApp.item",
+        "pk": 4,
+        "fields": {
+            "name": "Картофель фри",
+            "brand": "вкусно и",
+            "count": 0,
+            "description": "Большая порция",
+            "colors": []
+        }
+    },
+    {
+        "model": "MainApp.item",
+        "pk": 5,
+        "fields": {
+            "name": "Кепка",
+            "brand": "textil group",
+            "count": 124,
+            "description": "Стильная",
+            "colors": []
+        }
+    }
+    ]

@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
-</head>
-<body>
-    <header>
-        / <a href="/"> Home </a> / <a href="/items"> Items </a> / <a href="/about"> About </a>
-    </header>
+{% extends "base.html" %}
+
+{% block title %}
+    About
+{% endblock  %}
+
+{% block content %}
+    {{ block.super }}
 
     <h2> Страница автора</h2>
 
@@ -18,5 +15,4 @@
     телефон: {{ author.phone }}<br>
     email: {{ author.email }}<br>
 
-</body>
-</html>
+{% endblock %}

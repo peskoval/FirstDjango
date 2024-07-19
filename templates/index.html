@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Main page</title>
-</head>
-<body>
-    <header>
-        / <a href="/"> Home </a> / <a href="/items"> Items </a> / <a href="/about"> About </a>
-    </header>
-    
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Homepage
+{% endblock  %}
+
+{% block content %}
+    {{ block.super }}
+    <br>
+
+    <img width="50px" src="{% static "images/django.svg" %}" alt="My image">
+
     <h1>Приветствую!</h1>
 
     Меня зовут: <i>{{ name }}</i><br>
@@ -17,5 +20,4 @@
     Это главная страница сайта<br>
     <i>Сайт пока в разработке...</i>
 
-</body>
-</html>
+{% endblock  %}
